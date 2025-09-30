@@ -52,7 +52,6 @@ function ImMain() {
 
   const traverseNode = (nodes) => {
     if (!Array.isArray(nodes)) {
-      console.error("Expected nodes to be an array, got:", nodes);
       return [];
     }
     return nodes.map((node) => (

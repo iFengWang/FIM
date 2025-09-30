@@ -610,14 +610,6 @@ function ImChat(props) {
               new URLSearchParams(window.location.search).get("uId")
             );
             const isMe = msg.from?.id === currentUid;
-            console.log(
-              "Message sender:",
-              msg.from?.id,
-              "Current user:",
-              currentUid,
-              "isMe:",
-              isMe
-            );
             const time = new Date(msg.timestamp).toLocaleString();
 
             if (
