@@ -1,0 +1,684 @@
+:root {
+  /* green */
+  --im-foreground-green: rgb(32, 99, 5);
+  --im-background-green: linear-gradient(
+    135deg,
+    rgb(101, 247, 82),
+    rgb(11, 126, 7),
+    rgb(101, 247, 82)
+  );
+  --im-border-green: rgb(36, 114, 5);
+  --im-secondary-green: rgb(100, 160, 85);
+  --im-fore-shadow-green: rgb(59, 245, 68);
+  --im-back-shadow-green: rgb(20, 65, 2);
+
+  /* red */
+  --im-foreground-red: rgb(99, 5, 5);
+  --im-background-red: linear-gradient(
+    90deg,
+    rgb(247, 82, 82),
+    rgb(160, 2, 2),
+    rgb(245, 42, 42)
+  );
+  --im-border-red: rgb(114, 5, 5);
+  --im-secondary-red: rgb(160, 85, 85);
+  --im-fore-shadow-red: rgb(245, 59, 59);
+  --im-back-shadow-red: rgb(65, 2, 2);
+
+  /* gold */
+  --im-foreground-gold: rgb(102, 101, 5);
+  --im-background-gold: linear-gradient(
+    90deg,
+    rgb(242, 247, 82),
+    rgb(160, 157, 2),
+    rgb(242, 245, 42)
+  );
+  --im-border-gold: rgb(109, 114, 5);
+  --im-secondary-gold: rgb(150, 160, 85);
+  --im-fore-shadow-gold: rgb(239, 245, 59);
+  --im-back-shadow-gold: rgb(64, 65, 2);
+
+  /* blue */
+  --im-foreground-blue: rgb(5, 50, 102);
+  --im-background-blue: linear-gradient(
+    90deg,
+    rgb(82, 151, 247),
+    rgb(2, 102, 160),
+    rgb(42, 201, 245)
+  );
+  --im-border-blue: rgb(5, 61, 114);
+  --im-secondary-blue: rgb(85, 120, 160);
+  --im-fore-shadow-blue: rgb(59, 155, 245);
+  --im-back-shadow-blue: rgb(2, 35, 65);
+
+  /* gray */
+  --im-foreground-gray: rgb(79, 78, 78);
+  --im-background-gray: linear-gradient(
+    90deg,
+    rgb(255, 255, 255),
+    rgb(140, 140, 140),
+    rgb(201, 202, 202)
+  );
+  --im-border-gray: rgb(67, 67, 67);
+  --im-secondary-gray: rgb(127, 129, 129);
+  --im-fore-shadow-gray: rgb(240, 237, 237);
+  --im-back-shadow-gray: rgb(61, 62, 62);
+  
+  /* reference variable */
+
+  --im-foreground: var(--im-foreground-green);
+  --im-background: var(--im-background-green);
+  --im-border: var(--im-border-green);
+  --im-secondary: var(--im-secondary-green);
+  --im-fore-shadow: var(--im-fore-shadow-green);
+  --im-back-shadow: var(--im-back-shadow-green);
+}
+
+.im-icon {
+  font-size: 18px;
+  font-weight: bold;
+  margin: auto;
+  pointer-events: auto;
+  cursor: default;
+  border: solid 10px transparent;
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+}
+
+.im-icon.blink {
+  animation: blinkIcon 1s infinite;
+}
+
+.im-icon:hover {
+  color: #fff;
+}
+
+.im-main {
+  resize: vertical;
+  position: absolute;
+  filter: grayscale(0%);  
+  border: solid 1px var(--im-border);
+  border-radius: 7px;
+  box-shadow: 5px 5px 20px 0px var(--im-back-shadow);
+  overflow: hidden;
+  background: var(--im-background);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.im-handler {
+  width: 100%;
+  height: 100%;
+  cursor: move;
+}
+
+.im-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+.im-header {
+  width: 100%;
+  pointer-events:all;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  color: var(--im-foreground);
+  text-shadow: 1px 1px var(--im-fore-shadow);
+}
+
+.im-header-title {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.im-header-button {
+  outline: none;
+  background: transparent;
+  border: 0;
+  font-size: 16px;
+  color: var(--im-foreground);
+  margin: auto;
+  pointer-events: auto;
+}
+
+.im-header-button:hover {
+  color: #fff;
+}
+
+.im-content {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.im-frame {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: solid 1px var(--im-fore-shadow);
+  border-top: solid 1px var(--im-border);
+  border-left: solid 1px var(--im-border);
+  border-radius: 5px;
+}
+
+.im-search {
+  height: 30px;
+  background: var(--im-secondary);
+  display: flex;
+  flex-direction: row;
+}
+
+.im-input {
+  margin: 0;
+  border: 0;
+  width: 100%;
+  outline: none;
+  color: var(--im-foreground);
+  background: transparent;
+}
+
+.im-node-text {
+  white-space: nowrap;
+}
+
+.im-main-list { 
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+  background: #fff;
+}
+
+.im-footer {
+  height: 15px;
+}
+
+.im-set {
+  border: solid 1px var(--im-border);
+  margin: 15px 10px 5px 10px;
+  border-radius: 5px;
+  /* min-height: 50px; */
+}
+
+.im-chat {
+  border: solid 0.5px var(--im-border);
+  /* margin: 15px 10px 5px 10px; */
+  border-radius: 0px;
+  min-height: 70px;
+  background: var(--im-secondary);
+}
+
+.im-child-title {
+  position: relative;
+  top: 10px;
+  left: 15px;
+  color: var(--im-foreground);
+}
+
+.im-frame-foot {
+  text-align: right;
+  margin: 10px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.im-button {
+  width: 60px;
+  height: 30px;
+  border: solid 1px var(--im-border);
+  border-radius: 5px;
+  background: var(--im-background);
+  color: var(--im-foreground);
+}
+
+.im-button:hover {
+  color: #fff;
+}
+
+p {
+  margin: 20px;
+  color: var(--im-foreground);
+}
+
+/* dom Tree style start ****************************/
+/* ul.domtree {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0.5em;
+  cursor: pointer;
+  line-height: 25px;
+}
+
+ul.domtree .open:before {
+  content: "▾";
+  top: -0.1em;
+  left: -0.6em;
+  border-width: 0px;
+}
+
+ul.domtree .close:before {
+  content: "▸";
+  top: -0.1em;
+  left: -0.6em;
+  border-width: 0px;
+}
+
+ul.domtree ul {
+  list-style: none;
+  position: relative;
+  padding: 0 0 0 0.5em;
+  top: -0em;
+  left: 0.3em;
+  border-style: none none none dotted;
+  border-width: 0.05em;
+  border-color: var(--im-border);
+}
+
+ul.domtree ul:last-child:after {
+  position: absolute;
+  content: "";
+  top: 0.73em;
+  left: -0.1em;
+  width: 0.5em;
+  bottom: 0;
+  border-style: none none none solid;
+  border-width: 0em 0em 0em 0.2em;
+  border-color: #fff #fff #fff #fff;
+}
+
+ul.domtree ul li:after {
+  position: absolute;
+  content: "";
+  top: 0.7em;
+  left: -0em;
+  width: 0.5em;
+  bottom: 0;
+  border-style: dotted none none none;
+  border-width: 0.05em 0em 0em 0em;
+  border-color: var(--im-border) #ccc #ccc #ccc;
+} */
+
+ul.domtree {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0em;
+  cursor: pointer;
+  line-height: 25px;
+}
+
+ul.domtree .open:before {
+  content: "▾";
+  top: -0.1em;
+  left: -0.6em;
+  border-width: 0px;
+}
+
+ul.domtree .close:before {
+  content: "▸";
+  top: -0.1em;
+  left: -0.6em;
+  border-width: 0px;
+}
+
+ul.domtree ul li {
+  list-style: none;
+  position: relative;
+  padding: 0 0 0 0.5em;
+  top: -0em;
+  left: -2.2em;
+  border-style: none none none dotted;
+  border-width: 0.05em;
+  border-color: var(--im-border);
+}
+
+ul.domtree li::after {
+  position: absolute;
+  content: "";
+  top: 0.7em;
+  left: -0em;
+  width: 0.5em;
+  bottom: 0;
+  border-style: dotted none none none;
+  border-width: 0.05em;
+  border-color: var(--im-border);
+}
+
+ul.domtree ul li:last-child::after {
+  position: absolute;
+  content: "";
+  top: 0.8em;
+  left: -0.2em;
+  width: 0.2em;
+  bottom: 0;
+  border-style: dotted none none solid;
+  border-width: 0.05em 0em 0em 0.5em;
+  border-color: var(--im-border) #fff #fff #fff;
+}
+
+/* dom Tree style end *******************************/
+
+.avtar {
+  margin: 0px 3px;
+  width: 12px;
+}
+
+.department {
+  color: var(--im-foreground);
+}
+/* .department:hover {
+  color: #f00;
+} */
+
+.user:hover {
+  color: #f00;
+}
+
+.user-offline {
+  color: #999;
+}
+
+.user-online {
+  color: #333;
+}
+
+.unread-count {
+  margin-left: 5px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  min-width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding: 0 4px;
+  position: relative;
+  top: -3px;
+}
+
+
+
+/* video ************************************************* */
+#remoteVideo {
+  background: rgb(48, 47, 47);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(180deg);
+}
+
+#localVideo {
+  background: rgb(48, 47, 47);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(180deg);
+  box-shadow: 1px 0px 1px 0px var(--im-back-shadow);
+}
+
+.btn-close {
+  font-size: 15px;
+  color: var(--im-foreground);
+  background-color: transparent;
+  position: absolute;
+  outline: none;
+  border: 0;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.btn-close:hover {
+  color: white;
+}
+
+.control-panel {
+  display: flex;
+  position: absolute;
+  left: 20px;
+  top: 50px;
+  flex-direction: column;
+  height: 80%;
+  overflow-y: auto;
+}
+
+.im-chat-control-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  color: var(--im-foreground);
+  background: var(--im-background);
+  border: solid 1px var(--im-border);
+  border-radius: 20px;
+  outline: none;
+}
+
+.im-chat-control-btn:hover {
+  color: #fff;
+}
+
+.custom-pointer {
+  width: 20px;
+  height: 50px;
+  border-radius: 5px;
+  background: var(--im-background);
+  box-shadow: 0 1px 4px 0 var(--im-back-shadow);
+}
+
+/* me chat ....................................*/
+.me-chat-panel {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.me-chat {
+  word-break: break-all;
+  border: solid 2px var(--im-border);
+  border-radius: 10px 10px 10px 10px;
+  position: relative;
+  color: var(--im-foreground);
+  line-height: 25px;
+  min-width: 150px;
+  max-width: calc(100% - 140px);
+  margin: 10px;
+  padding: 10px;
+  background: var(--im-background);
+}
+
+.me-chat:after {
+  border-color: transparent transparent transparent var(--im-border);
+  border-style: solid;
+  border-width: 10px;
+  top: 10px;
+  content: "";
+  display: block;
+  right: -20px;
+  position: absolute;
+}
+
+/* you chat ....................................*/
+.you-chat-panel {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.you-chat {
+  word-break: break-all;
+  border: solid 2px #333;
+  border-radius: 10px 10px 10px 10px;
+  position: relative;
+  color: #333;
+  line-height: 25px;
+  min-width: 150px;
+  max-width: calc(100% - 140px);
+  margin: 10px;
+  padding: 10px;
+  background: #fefefe;
+}
+
+.you-chat:after {
+  border-color: transparent #333 transparent transparent;
+  border-style: solid;
+  border-width: 10px;
+  top: 10px;
+  content: "";
+  display: block;
+  left: -20px;
+  position: absolute;
+}
+
+/* video invite dialog ............................ */
+.video-invite-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  pointer-events: auto;
+}
+
+.video-invite-content {
+  background: var(--im-background);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.video-invite-content h3 {
+  margin: 0 0 15px 0;
+  color: var(--im-foreground);
+}
+
+.video-invite-content p {
+  margin: 0 0 20px 0;
+  color: var(--im-foreground);
+}
+
+.video-invite-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.video-invite-buttons button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.video-invite-buttons button:first-child {
+  background-color: #7b120a;
+  color: white;
+}
+
+.video-invite-buttons button:last-child {
+  color: white;
+  background-color: #4CAF50;
+}
+
+.video-invite-buttons button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* animation ................................... */
+@keyframes flash {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.3);
+  }
+}
+
+@keyframes shake {
+  from {
+    transform: translate(0px, 0px);
+    -webkit-transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(3px, 0px);
+    -webkit-transform: translate(3px, 0px);
+  }
+}
+
+@keyframes blinkIcon {
+  0% { 
+    color: var(--im-foreground);
+    transform: scale(1);
+  }
+  50% { 
+    color: red;
+    transform: scale(1.2);
+  }
+  100% { 
+    color: var(--im-foreground);
+    transform: scale(1);
+  }
+}
+
+.new-msg {
+  animation: flash 200ms;
+  -webkit-animation: flash 200ms;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  display: inline-block;
+  color: red;
+}
+
+.have-msg:after {
+  content: " ✉";
+  animation: shake 200ms;
+  -webkit-animation: shake 200ms;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  display: inline-block;
+  color: red;
+}
+
+
+.im-chat-time {
+  width: 100%;
+  color: var(--im-font-color);
+  text-align: center;
+  font-size: 10px;
+}
+
+
+

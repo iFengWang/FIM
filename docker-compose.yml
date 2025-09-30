@@ -1,0 +1,12 @@
+version: "3"
+services:
+  server:
+    image: df.im.server:latest
+    ports:
+      - "3000:3000"
+  web:
+    image: df.im.client:latest
+    depends_on:
+      - server
+    ports:
+      - "443:443"
