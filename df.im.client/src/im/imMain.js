@@ -38,6 +38,22 @@ function ImMain() {
     return parseInt(uid);
   };
 
+  const handleNodeClick = (e, node) => {
+    e.stopPropagation();
+    if (node.type === "U") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const currentUid = parseInt(urlParams.get("uId"));
+      if (node.uid === currentUid) {
+        alert("不能给自己发消息！");
+        return;
+      }
+      dispatch(togglerChat({ name: node.name, uid: node.uid }));
+      dispatch(clearUnreadMessages({ uid: node.uid }));
+    } else {
+      togglerNode(e);
+    }
+  };
+
   const togglerNode = (node) => {
     if (node.target.tagName === "UL") return;
     let isHide = node.currentTarget.children[1].style.display === "none";
@@ -64,33 +80,8 @@ function ImMain() {
             ? "user user-online im-node-text"
             : "user user-offline im-node-text"
         }
-        onClick={(e) => {
-          e.stopPropagation();
-          if (node.type === "U") {
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentUid = parseInt(urlParams.get("uId"));
-            if (node.uid === currentUid) {
-              alert("不能给自己发消息！");
-              return;
-            }
-            dispatch(togglerChat({ name: node.name, uid: node.uid }));
-            dispatch(clearUnreadMessages({ uid: node.uid }));
-          } else {
-            togglerNode(e);
-          }
-        }}
-        onTouchEnd={(e) => {
-          if (node.type === "U") {
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentUid = parseInt(urlParams.get("uId"));
-            if (node.uid === currentUid) {
-              alert("不能给自己发消息！");
-              return;
-            }
-            dispatch(togglerChat({ name: node.name, uid: node.uid }));
-            dispatch(clearUnreadMessages({ uid: node.uid }));
-          }
-        }}
+        onClick={(e) => handleNodeClick(e, node)}
+        onTouchEnd={(e) => handleNodeClick(e, node)}
       >
         {node.type === "C" ? (
           <FontAwesomeIcon icon={faBuildingUser} className="avtar" />
