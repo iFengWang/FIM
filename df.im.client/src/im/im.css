@@ -503,7 +503,7 @@ ul.domtree ul li:last-child::after {
   max-width: calc(100% - 140px);
   margin: 10px;
   padding: 10px;
-  background: var(--im-background);
+  background: #fefefe;
 }
 
 .me-chat:after {
@@ -527,16 +527,16 @@ ul.domtree ul li:last-child::after {
 
 .you-chat {
   word-break: break-all;
-  border: solid 2px #333;
+  border: solid 2px var(--im-border);
   border-radius: 10px 10px 10px 10px;
   position: relative;
-  color: #333;
+  color: var(--im-foreground);
   line-height: 25px;
   min-width: 150px;
   max-width: calc(100% - 140px);
   margin: 10px;
   padding: 10px;
-  background: #fefefe;
+  /* background: #fefefe; */
 }
 
 .you-chat:after {
@@ -675,7 +675,7 @@ ul.domtree ul li:last-child::after {
 
 .im-chat-time {
   width: 100%;
-  color: var(--im-font-color);
+  color: var(--im-foreground);
   text-align: center;
   font-size: 10px;
 }
